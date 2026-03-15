@@ -1,8 +1,8 @@
 import xarray as xr
 import matplotlib.pyplot as plt
 
-file1 = "/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_00:00:00"
-file2 = "/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_03:00:00"
+file1 = r"/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_00:00:00"
+file2 = r"/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_03:00:00"
 
 ds1 = xr.open_dataset(file1)
 ds2 = xr.open_dataset(file2)
