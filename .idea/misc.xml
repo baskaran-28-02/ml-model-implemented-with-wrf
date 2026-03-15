@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="Python 3.12" />
+    <option name="sdkName" value="$PROJECT_DIR$/.venv/bin/python" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (ml-model-implemented-with-wrf)" project-jdk-type="Python SDK" />
 </project>
