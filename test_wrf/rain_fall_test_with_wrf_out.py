@@ -4,11 +4,10 @@ import matplotlib.pyplot as plt
 file1 = r"/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_00:00:00"
 file2 = r"/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_03:00:00"
 
-ds1 = xr.open_dataset(file1)
-ds2 = xr.open_dataset(file2)
+def test_rainfall_three_hour(file_path: str, file_path_2: str):
+    ds1 = xr.open_dataset(file_path)
+    ds2 = xr.open_dataset(file_path_2)
 
-
-def test_rainfall_three_hour():
     rain1 = ds1["RAINC"].isel(Time=0) + ds1["RAINNC"].isel(Time=0)
     rain2 = ds2["RAINC"].isel(Time=0) + ds2["RAINNC"].isel(Time=0)
 

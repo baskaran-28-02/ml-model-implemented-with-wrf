@@ -2,11 +2,9 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_path = "/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_00:00:00"
 
-ds = xr.open_dataset(file_path)
-
-def view_wind_speed():
+def view_wind_speed(file_path: str, title: str = "Wind Speed", img_path: str = "images/"):
+    ds = xr.open_dataset(file_path)
     u10 = ds["U10"].isel(Time=0)
     v10 = ds["V10"].isel(Time=0)
     wind = np.sqrt(u10**2 + v10**2)
@@ -19,5 +17,10 @@ def view_wind_speed():
     plt.colorbar(label="10 m Wind Speed (m/s)")
     plt.xlabel("Longitude")
     plt.ylabel("Latitude")
-    plt.title("Nested Domain Wind Speed")
+    plt.title(title)
+
+    # Save image using title (replace spaces to avoid issues)
+    filename = title.replace(" ", "_").lower() + ".png"
+    plt.savefig(img_path+"nested_two_way_one_input_"+filename, dpi=300, bbox_inches="tight")
+    print(f"Wind speed map saved as {filename}")
     plt.show()

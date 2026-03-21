@@ -1,12 +1,10 @@
 import xarray as xr
 import matplotlib.pyplot as plt
 
-file1 = "/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_00:00:00"
-file2 = "/home/anuruththan/WRF/WRF/test/em_real/wrfout_d01_2016-10-06_03:00:00"
 
-def view_rainfall():
-    ds1 = xr.open_dataset(file1)
-    ds2 = xr.open_dataset(file2)
+def view_rainfall(file_path: str, file_path_2: str, title: str = "Rainfall", img_path: str = "images/"):
+    ds1 = xr.open_dataset(file_path)
+    ds2 = xr.open_dataset(file_path_2)
 
     rain1 = ds1["RAINC"].isel(Time=0) + ds1["RAINNC"].isel(Time=0)
     rain2 = ds2["RAINC"].isel(Time=0) + ds2["RAINNC"].isel(Time=0)
@@ -20,5 +18,11 @@ def view_rainfall():
     plt.colorbar(label="3-hour Rainfall (mm)")
     plt.xlabel("Longitude")
     plt.ylabel("Latitude")
-    plt.title("Nested Domain 3-hour Rainfall")
+    plt.title(title)
+
+    # Save image using title (replace spaces to avoid issues)
+    filename = title.replace(" ", "_").lower() + ".png"
+    plt.savefig(img_path+"nested_two_way_one_input_"+filename, dpi=300, bbox_inches="tight")
+    print(f"Rainfall map saved as {filename}")
+
     plt.show()
